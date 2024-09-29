@@ -11,12 +11,6 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-
-
-
-
-
-
 while True:
     try:
         conn=psycopg2.connect(host='localhost',database='fastapi',user='postgres',password='admin123',cursor_factory=RealDictCursor)
