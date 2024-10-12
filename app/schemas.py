@@ -11,25 +11,31 @@ class PostBase(BaseModel):
 class PostCreate(PostBase):
     pass
 
+class UserResponse(BaseModel):
+    id: int
+    email: EmailStr
+    created_at:datetime
+
+    class Config:
+        from_attributes = True
+
+
 class Post(BaseModel):
     id:int
     title: str
     content: str
     published: bool
     created_at:datetime
+    owner_id:int
+    owner:UserResponse
+
     class Config:
-        orm_mode=True
+        from_attributes=True
 
 class UserCreate(BaseModel):
     email : EmailStr
     password: str
 
-class UserResponse(BaseModel):
-    id: int
-    email: EmailStr
-
-    class Config:
-        from_attributes = True
 
 class UserLogin(BaseModel):
     email:EmailStr
